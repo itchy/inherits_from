@@ -1,8 +1,0 @@
-*.gem
-.bundle
-.rvmrc
-.DS_Store
-.gitignore
-.rspec
-Gemfile.lock
-pkg/*
