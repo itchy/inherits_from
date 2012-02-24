@@ -8,7 +8,7 @@ class User
 end 
 
 class Profile
-  extend InheritsFrom::ClassMethods
+  include InheritsFrom
   # rewrite inherits_from to not use belongs_to
   def self.inherits_from(inheriter, args={})
     inherited_methods(inheriter)

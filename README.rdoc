@@ -31,7 +31,7 @@ in a normalized RDBMS.
   end
 
   class Profile < ActiveRecord::Base
-    extend InheritsFrom::ClassMethods
+    include InheritsFrom
     inherits_from :user # this would be belongs_to if not using inherits_from
   end	
 

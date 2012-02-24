@@ -1,6 +1,10 @@
 require "inherits_from/version"
 
 module InheritsFrom
+  def self.included(base)
+    base.extend ClassMethods
+  end
+  
   module ClassMethods
     def inherits_from(inheriter, args={})
       belongs_to inheriter, args

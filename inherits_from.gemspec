@@ -7,9 +7,11 @@ Gem::Specification.new do |s|
   s.version     = InheritsFrom::VERSION
   s.authors     = ["Scott Johnson"]
   s.email       = ["7.scott.j@gmail.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.homepage    = "https://github.com/itchy/inherits_from"
+  s.summary     = %q{ gem that provides an inheritance interface for ActiveRecord Models}
+  s.description = %q{inherits_from provides an interface that allows ActiveRecord models to access other 
+  ActiveRecord models as though they were subclassed, while allowing data to be stored 
+  in a normalized RDBMS.}
 
   s.rubyforge_project = "inherits_from"
 
@@ -19,6 +21,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_development_dependency "rspec"
+  s.add_runtime_dependency "activerecord"
 end
