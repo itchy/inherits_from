@@ -1,24 +1,41 @@
 = inherits_from - A gem that provides an inheritance interface for ActiveRecord Models
 
+== Introduction
+inherits_from address the different paradigms between OO and RDBMS to allow ActiveRecord(AR) 
+objects to inherit from AR objects.  Both systems have objects with Behavior, Identity & State.
+OO objects that inherit from each other should have direct access to all superclasses' behavior 
+identity and state. RDBMS entities relate to each other.  RDBMS entries should normalize 
+state across multiple tables.  Because AR stores state in RDBMS, objects that should 
+inherit from other AR objects are required to use composition.
+
+inherits_from provides an interface that allows ActiveRecord models to access other 
+ActiveRecord models as though they were subclassed, while allowing data to be stored 
+in a normalized RDBMS.
+
+== Resources
+
+=== Installation
+
+  gem install inherits_from
 	
-== Git Repository	
+=== Git Repository
+	https://github.com/itchy/inherits_from
 
 == Requirements
 	inherits_from requires ActiveRecord
 	
 === Example
-	class User < ActiveRecord::Base
-		# has an attribute of email
+  class User < ActiveRecord::Base
+    has_many :profiles
+    # has an attribute of email
+  end
 
-		has_many :profiles
-	end
+  class Profile < ActiveRecord::Base
+    extend InheritsFrom::ClassMethods
+    inherits_from :user # this would be belongs_to if not using inherits_from
+  end	
 
-	class Profile < ActiveRecord::Base
-		extend InheritsFrom::ClassMethods
-		inherits_from :user # this would be belongs_to if not using inherits_from
-	end	
-
-	p = Profile.first
-	p.email => provides p.user.email
-	p.email="new@email.com" => sets the value of p.user.email
-	p.save => will also save p.user if it is tainted?	
+  p = Profile.first
+  p.email => provides p.user.email
+  p.email="new@email.com" => sets the value of p.user.email
+  p.save => will also save p.user if it is tainted?
