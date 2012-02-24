@@ -1,0 +1,24 @@
+= inherits_from - A gem that provides an inheritance interface for ActiveRecord Models
+
+	
+== Git Repository	
+
+== Requirements
+	inherits_from requires ActiveRecord
+	
+=== Example
+	class User < ActiveRecord::Base
+		# has an attribute of email
+
+		has_many :profiles
+	end
+
+	class Profile < ActiveRecord::Base
+		extend InheritsFrom::ClassMethods
+		inherits_from :user # this would be belongs_to if not using inherits_from
+	end	
+
+	p = Profile.first
+	p.email => provides p.user.email
+	p.email="new@email.com" => sets the value of p.user.email
+	p.save => will also save p.user if it is tainted?	

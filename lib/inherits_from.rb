@@ -1,6 +1,6 @@
-require "pseudo_inheritance/version"
+require "inherits_from/version"
 
-module PseudoInheritance
+module InheritsFrom
   module ClassMethods
     def inherits_from(inheriter, args={})
       belongs_to inheriter, args
@@ -45,10 +45,12 @@ module PseudoInheritance
     end
   
     def inherited_respond_to(inheriter)
-      define_method("respond_to?") do |method|
-        return true if super(method)
+      define_method("respond_to?") do |*args|
+        method = args[0]
+        include_private = args[1] ||= false
+        return true if super(method, include_private)
         model = self.send inheriter
-        model.send(:respond_to?, method) 
+        model.respond_to?(method, include_private) 
       end
     end
   end

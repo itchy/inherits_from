@@ -1,17 +1,17 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "pseudo_inheritance/version"
+require "inherits_from/version"
 
 Gem::Specification.new do |s|
-  s.name        = "pseudo_inheritance"
-  s.version     = PseudoInheritance::VERSION
+  s.name        = "inherits_from"
+  s.version     = InheritsFrom::VERSION
   s.authors     = ["Scott Johnson"]
   s.email       = ["7.scott.j@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{TODO: Write a gem summary}
   s.description = %q{TODO: Write a gem description}
 
-  s.rubyforge_project = "pseudo_inheritance"
+  s.rubyforge_project = "inherits_from"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
